@@ -16,6 +16,7 @@ jobs:
       uses: actions/setup-node@v4
       with:
         node-version: 22.12
+        cache-dependency-path: boeygembos/package-lock.json
         cache: 'npm'
         
     - run: cd /boeygembos & npm install & npm run build --if-present

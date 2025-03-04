@@ -18,7 +18,7 @@ jobs:
         node-version: 22.12
         cache-dependency-path: boeygembos/package-lock.json
         cache: 'npm'
-        
+    - run: ls
     - run: cd /boeygembos & npm install & npm run build --if-present
     
     - name: 📂 Sync files

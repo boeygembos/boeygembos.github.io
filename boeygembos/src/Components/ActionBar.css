@@ -1,0 +1,25 @@
+.ActionBar_buttons {
+    padding: .25rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ActionBar_buttons button {
+    padding: 0 .5rem;
+}
+
+.ActionBar_search {
+    background-color: var(--color-complement);
+    color: var(--color-dominant);
+    padding: .25rem;
+}
+
+.ActionBar {
+    background-color: var(--color-dominant);
+    color: var(--color-100);
+
+    display: flex;
+    justify-content: space-between;
+
+    padding: 1rem;
+}

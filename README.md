@@ -7,7 +7,10 @@
 - info bos
     - evolutie van het bos
     - platen die kinderen hebben gemaakt
+    - wilgenhutten
+    - bosbeheer
 - info over planten en dieren in het bos (as-is, to-be)
+    - fruit in het bos
 - evt filmpje
 - bosklas
     - foto's van bosklas

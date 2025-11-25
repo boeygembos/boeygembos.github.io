@@ -4,15 +4,24 @@
 
 You've created a project on tina.io! Now let's connect it to your app.
 
-### Step 1: Get Your Credentials
+### Step 1: Connect Your GitHub Repository
 
 1. Go to your Tina.io project dashboard
+2. Navigate to **Settings** → **GitHub Connection**
+3. Click **Connect to GitHub** and authorize TinaCMS
+4. Select your repository: `boeygembos/boeygembos.github.io`
+5. Choose the branch: `main`
+6. Wait for the initial sync to complete
+
+### Step 2: Get Your Credentials
+
+1. Still in your Tina.io project dashboard
 2. Navigate to **Settings** → **API Tokens**
 3. Copy these values:
    - **Client ID** (starts with a long string)
    - **Read-only Token** (starts with a long string)
 
-### Step 2: Configure Your App
+### Step 3: Configure Your App
 
 1. Open the `.env` file in your project root
 2. Replace the placeholder values:
@@ -24,7 +33,7 @@ TINA_TOKEN=paste_your_token_here
 
 3. Save the file
 
-### Step 3: Start with TinaCMS
+### Step 4: Start with TinaCMS
 
 Stop your current dev server and restart with TinaCMS:
 
@@ -39,7 +48,7 @@ This will:
 - Start your Vite dev server
 - Enable the visual editor
 
-### Step 4: Access the Admin Panel
+### Step 5: Access the Admin Panel
 
 1. Open your browser to: **http://localhost:5173/admin**
 2. You'll see the TinaCMS admin interface
@@ -66,9 +75,14 @@ When ready to deploy:
 npm run build
 ```
 
-This will build your React app and output to `dist/` folder.
+This will:
+1. Build the TinaCMS admin interface (available at `/admin` in production)
+2. Build your React app
+3. Output everything to `dist/` folder
 
-**Note:** The standard build command uses only Vite and does not include the TinaCMS admin panel in production. This is perfect for static site deployment where content is managed locally via JSON files. The TinaCMS admin is only available in development mode (`npm run dev`).
+**Important:** For the build to work, you must first connect your GitHub repository to TinaCloud (see Step 1 above). TinaCMS needs to sync your content from GitHub to provide the admin interface.
+
+**Alternative:** If you don't want TinaCMS in production, use `npm run build:vite` instead. This builds only the public site without the admin panel.
 
 ## 🔧 Troubleshooting
 
@@ -85,6 +99,17 @@ This will build your React app and output to `dist/` folder.
 - Refresh the page
 - Check the browser console for errors
 - Verify JSON files are valid (no syntax errors)
+
+### "Branch is not on TinaCloud" Error
+This error occurs when building with TinaCMS. To fix it:
+1. Go to your [Tina.io project dashboard](https://app.tina.io/projects/fb5fff02-2fd0-422c-994c-7b2c1d795539/configuration)
+2. Navigate to **Settings** → **GitHub Connection**
+3. Click **Connect to GitHub** if not already connected
+4. Select your repository and the `main` branch
+5. Wait for TinaCloud to sync your branch
+6. Try building again with `npm run build`
+
+**Note:** This error only affects builds with TinaCMS admin. If you don't need the admin in production, use `npm run build:vite` instead.
 
 ## 📚 Next Steps
 

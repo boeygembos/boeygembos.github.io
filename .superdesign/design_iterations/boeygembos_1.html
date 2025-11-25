@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boeygem Bos - Ontdek de Natuur</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="theme_1.css">
+
+    <style>
+        /* Additional custom styles */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)),
+                        url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=900&fit=crop') center/cover;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            animation: fadeInUp 800ms ease-out forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: oklch(0.99 0.005 110);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: all 300ms ease-out;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .btn-primary {
+            background: oklch(0.48 0.12 150);
+            color: oklch(0.99 0.005 110);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            font-size: 1.125rem;
+            border: none;
+            cursor: pointer;
+            transition: all 200ms ease-out;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        .btn-secondary {
+            background: oklch(0.55 0.09 60);
+            color: oklch(0.99 0.005 110);
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 200ms ease-out;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+
+        .icon-card {
+            text-align: center;
+            padding: 2rem;
+            background: oklch(0.99 0.005 110);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            transition: all 300ms ease-out;
+            cursor: pointer;
+        }
+
+        .icon-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .icon-card i {
+            font-size: 3rem;
+            color: oklch(0.48 0.12 150);
+            transition: transform 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .icon-card:hover i {
+            transform: scale(1.15);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: oklch(0.97 0.01 130);
+            box-shadow: var(--shadow-2xl);
+            transition: left 350ms ease-out;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 250ms ease-out;
+            z-index: 999;
+        }
+
+        .menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .nav-item {
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: oklch(0.25 0.02 140);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 200ms ease-out;
+            border-left: 4px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: oklch(0.92 0.03 130);
+            border-left-color: oklch(0.48 0.12 150);
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .desktop-nav-item {
+                padding: 0.75rem 1.25rem;
+                color: oklch(0.35 0.03 140);
+                text-decoration: none;
+                font-weight: 500;
+                font-size: 1rem;
+                border-radius: var(--radius-md);
+                transition: all 200ms ease-out;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .desktop-nav-item:hover {
+                background: oklch(0.92 0.03 130);
+                color: oklch(0.48 0.12 150);
+            }
+
+            .desktop-nav-item i {
+                width: 20px;
+                height: 20px;
+            }
+
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 500ms ease-out;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 250ms ease-out;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Scroll hint */
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 1200ms infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translate(-50%, 0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translate(-50%, 8px);
+                opacity: 1;
+            }
+        }
+
+        /* Stagger animation for cards */
+        .stagger-item {
+            animation: fadeInUp 600ms ease-out forwards;
+            opacity: 0;
+        }
+
+        .stagger-item:nth-child(1) { animation-delay: 0ms; }
+        .stagger-item:nth-child(2) { animation-delay: 150ms; }
+        .stagger-item:nth-child(3) { animation-delay: 300ms; }
+        .stagger-item:nth-child(4) { animation-delay: 450ms; }
+        .stagger-item:nth-child(5) { animation-delay: 600ms; }
+
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, oklch(0.92 0.03 130) 0%, oklch(0.95 0.02 120) 100%);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            margin: 4rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: oklch(0.25 0.02 140);
+            color: oklch(0.99 0.005 110);
+            padding: 3rem 0 1.5rem;
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: oklch(0.75 0.11 230);
+            text-decoration: none;
+            transition: color 200ms ease-out;
+        }
+
+        footer a:hover {
+            color: oklch(0.85 0.11 230);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 70vh;
+            }
+
+            h1 {
+                font-size: 2rem !important;
+            }
+
+            .featured-section {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <nav class="mobile-menu" id="mobileMenu">
+        <div style="padding: 2rem 1.5rem; border-bottom: 2px solid oklch(0.8 0.04 130);">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="margin: 0; color: oklch(0.48 0.12 150); font-size: 1.5rem;">🌲 Boeygem Bos</h2>
+                <button onclick="toggleMenu()" style="background: none; border: none; cursor: pointer; padding: 0.5rem;">
+                    <i data-lucide="x" style="color: oklch(0.45 0.05 140); width: 28px; height: 28px;"></i>
+                </button>
+            </div>
+        </div>
+        <div style="padding: 1rem 0;">
+            <a href="#home" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#intro" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="book-open"></i>
+                <span>Intro</span>
+            </a>
+            <a href="#gallery" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="camera"></i>
+                <span>Fotogalerij</span>
+            </a>
+            <a href="#info" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="tree-deciduous"></i>
+                <span>Info Bos</span>
+            </a>
+            <a href="#nature" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="flower-2"></i>
+                <span>Planten & Dieren</span>
+            </a>
+            <a href="#fruit" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="apple"></i>
+                <span>Fruit in het Bos</span>
+            </a>
+            <a href="#video" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="video"></i>
+                <span>Video</span>
+            </a>
+            <a href="#bosklas" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="backpack"></i>
+                <span>Bosklas</span>
+            </a>
+            <a href="#contact" class="nav-item" onclick="toggleMenu()">
+                <i data-lucide="map-pin"></i>
+                <span>Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header style="background: oklch(0.99 0.005 110); box-shadow: var(--shadow-sm); position: sticky; top: 0; z-index: 900;">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 50px; height: 50px; background: oklch(0.48 0.12 150); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                    🌲
+                </div>
+                <h1 style="margin: 0; font-size: 1.5rem; color: oklch(0.48 0.12 150);">Boeygem Bos</h1>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <a href="#home" class="desktop-nav-item">
+                    <i data-lucide="home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#intro" class="desktop-nav-item">
+                    <i data-lucide="book-open"></i>
+                    <span>Intro</span>
+                </a>
+                <a href="#gallery" class="desktop-nav-item">
+                    <i data-lucide="camera"></i>
+                    <span>Galerij</span>
+                </a>
+                <a href="#nature" class="desktop-nav-item">
+                    <i data-lucide="flower-2"></i>
+                    <span>Natuur</span>
+                </a>
+                <a href="#bosklas" class="desktop-nav-item">
+                    <i data-lucide="backpack"></i>
+                    <span>Bosklas</span>
+                </a>
+                <a href="#contact" class="desktop-nav-item">
+                    <i data-lucide="map-pin"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="menu-toggle" onclick="toggleMenu()" style="background: none; border: none; cursor: pointer; padding: 0.5rem;">
+                <i data-lucide="menu" style="color: oklch(0.48 0.12 150); width: 32px; height: 32px;"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h1 style="font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);">
+                Welkom bij Boeygem Bos
+            </h1>
+            <p style="font-size: 1.5rem; margin-bottom: 2rem; text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
+                Ontdek de natuur, leer over wilde dieren en planten
+            </p>
+            <button class="btn-primary" onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth'})">
+                <i data-lucide="compass"></i>
+                Verken het Bos
+            </button>
+        </div>
+        <div class="scroll-hint">
+            <i data-lucide="chevron-down" style="color: white; width: 40px; height: 40px;"></i>
+        </div>
+    </section>
+
+    <!-- Quick Info Cards -->
+    <section style="max-width: 1400px; margin: -4rem auto 4rem; padding: 0 2rem; position: relative; z-index: 10;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+            <div class="icon-card stagger-item">
+                <i data-lucide="tree-pine" style="width: 64px; height: 64px;"></i>
+                <h3 style="margin: 1rem 0 0.5rem; color: oklch(0.48 0.12 150);">Over het Bos</h3>
+                <p style="font-size: 1rem; color: oklch(0.45 0.05 140);">Ontdek hoe Boeygem Bos ontstond en evolueerde</p>
+            </div>
+            <div class="icon-card stagger-item">
+                <i data-lucide="bug" style="width: 64px; height: 64px;"></i>
+                <h3 style="margin: 1rem 0 0.5rem; color: oklch(0.48 0.12 150);">Natuur & Dieren</h3>
+                <p style="font-size: 1rem; color: oklch(0.45 0.05 140);">Leer over planten en dieren in het bos</p>
+            </div>
+            <div class="icon-card stagger-item">
+                <i data-lucide="map" style="width: 64px; height: 64px;"></i>
+                <h3 style="margin: 1rem 0 0.5rem; color: oklch(0.48 0.12 150);">Bezoek Info</h3>
+                <p style="font-size: 1rem; color: oklch(0.45 0.05 140);">Praktische informatie voor je bezoek</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section id="intro" style="max-width: 1400px; margin: 6rem auto; padding: 0 2rem;">
+        <h2 style="text-align: center; font-size: 2.5rem; color: oklch(0.48 0.12 150); margin-bottom: 1rem;">
+            Hoe Het Bos Er Kwam
+        </h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.125rem; color: oklch(0.45 0.05 140);">
+            Het verhaal van Boeygem Bos begint jaren geleden, toen een visie om natuur terug te brengen naar onze gemeenschap werkelijkheid werd. Ontdek de reis van een leeg veld naar een bloeiend ecosysteem.
+        </p>
+        <div class="card" style="padding: 3rem; max-width: 900px; margin: 0 auto;">
+            <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&h=500&fit=crop"
+                 alt="Bos geschiedenis"
+                 style="width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-md); margin-bottom: 2rem;">
+            <p style="font-size: 1.125rem; line-height: 1.8; color: oklch(0.35 0.03 140);">
+                Boeygem Bos is meer dan een verzameling bomen. Het is een levend klaslokaal, een speelplaats voor ontdekking,
+                en een thuis voor talloze planten en dieren. Door de jaren heen is het bos gegroeid en veranderd, met hulp
+                van vrijwilligers, scholen en de gemeenschap.
+            </p>
+        </div>
+    </section>
+
+    <!-- Featured Section - Bosklas -->
+    <section id="bosklas" class="featured-section" style="max-width: 1400px; margin: 6rem auto; padding: 3rem 2rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+            <div>
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=600&fit=crop"
+                     alt="Kinderen in het bos"
+                     style="width: 100%; height: 450px; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
+            </div>
+            <div>
+                <h2 style="font-size: 2.5rem; color: oklch(0.48 0.12 150); margin-bottom: 1rem;">
+                    Bosklas - Leren in de Natuur
+                </h2>
+                <p style="font-size: 1.125rem; margin-bottom: 1.5rem; color: oklch(0.35 0.03 140); line-height: 1.8;">
+                    Ons bosklas programma brengt kinderen in contact met de natuur. Van wilgenhutten bouwen tot
+                    dieren spotten, onze educatieve programma's combineren plezier met leren.
+                </p>
+                <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                    <li style="padding: 0.75rem 0; display: flex; align-items: center; gap: 0.75rem;">
+                        <i data-lucide="check-circle" style="color: oklch(0.48 0.12 150); width: 24px; height: 24px;"></i>
+                        <span>Praktische natuurlessen voor alle leeftijden</span>
+                    </li>
+                    <li style="padding: 0.75rem 0; display: flex; align-items: center; gap: 0.75rem;">
+                        <i data-lucide="check-circle" style="color: oklch(0.48 0.12 150); width: 24px; height: 24px;"></i>
+                        <span>Begeleiding door ervaren natuurgidsen</span>
+                    </li>
+                    <li style="padding: 0.75rem 0; display: flex; align-items: center; gap: 0.75rem;">
+                        <i data-lucide="check-circle" style="color: oklch(0.48 0.12 150); width: 24px; height: 24px;"></i>
+                        <span>Creatieve activiteiten en ontdekkingstochten</span>
+                    </li>
+                </ul>
+                <button class="btn-secondary">
+                    <i data-lucide="arrow-right"></i>
+                    Meer Over Bosklas
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Preview -->
+    <section id="gallery" style="max-width: 1400px; margin: 6rem auto; padding: 0 2rem;">
+        <h2 style="text-align: center; font-size: 2.5rem; color: oklch(0.48 0.12 150); margin-bottom: 1rem;">
+            Fotogalerij
+        </h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.125rem; color: oklch(0.45 0.05 140);">
+            Bekijk de schoonheid van Boeygem Bos door de seizoenen heen
+        </p>
+        <div class="gallery-grid">
+            <div class="gallery-item stagger-item">
+                <img src="https://images.unsplash.com/photo-1511497584788-876760111969?w=400&h=300&fit=crop" alt="Bos foto 1">
+            </div>
+            <div class="gallery-item stagger-item">
+                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=400&h=300&fit=crop" alt="Bos foto 2">
+            </div>
+            <div class="gallery-item stagger-item">
+                <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=400&h=300&fit=crop" alt="Bos foto 3">
+            </div>
+            <div class="gallery-item stagger-item">
+                <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=400&h=300&fit=crop" alt="Bos foto 4">
+            </div>
+            <div class="gallery-item stagger-item">
+                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=400&h=300&fit=crop" alt="Bos foto 5">
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <button class="btn-secondary">
+                <i data-lucide="image"></i>
+                Bekijk Alle Foto's
+            </button>
+        </div>
+    </section>
+
+    <!-- Nature & Wildlife Section -->
+    <section id="nature" style="max-width: 1400px; margin: 6rem auto; padding: 0 2rem;">
+        <h2 style="text-align: center; font-size: 2.5rem; color: oklch(0.48 0.12 150); margin-bottom: 1rem;">
+            Planten & Dieren
+        </h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.125rem; color: oklch(0.45 0.05 140);">
+            Ontdek de rijke biodiversiteit van Boeygem Bos
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="card" style="padding: 2rem;">
+                <i data-lucide="flower-2" style="width: 48px; height: 48px; color: oklch(0.48 0.12 150); margin-bottom: 1rem;"></i>
+                <h3 style="color: oklch(0.48 0.12 150); margin-bottom: 0.75rem;">Planten</h3>
+                <p style="color: oklch(0.45 0.05 140);">
+                    Van inheemse bomen tot wilde bloemen, het bos herbergt een verscheidenheid aan plantensoorten die door de seizoenen veranderen.
+                </p>
+            </div>
+            <div class="card" style="padding: 2rem;">
+                <i data-lucide="bird" style="width: 48px; height: 48px; color: oklch(0.48 0.12 150); margin-bottom: 1rem;"></i>
+                <h3 style="color: oklch(0.48 0.12 150); margin-bottom: 0.75rem;">Vogels</h3>
+                <p style="color: oklch(0.45 0.05 140);">
+                    Luister naar het gezang van verschillende vogelsoorten die in het bos leven en broeden.
+                </p>
+            </div>
+            <div class="card" style="padding: 2rem;">
+                <i data-lucide="apple" style="width: 48px; height: 48px; color: oklch(0.48 0.12 150); margin-bottom: 1rem;"></i>
+                <h3 style="color: oklch(0.48 0.12 150); margin-bottom: 0.75rem;">Fruit & Noten</h3>
+                <p style="color: oklch(0.45 0.05 140);">
+                    Ontdek de eetbare vruchten en noten die in het seizoen te vinden zijn in verschillende delen van het bos.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Accessibility -->
+    <section id="contact" style="max-width: 1400px; margin: 6rem auto; padding: 0 2rem;">
+        <h2 style="text-align: center; font-size: 2.5rem; color: oklch(0.48 0.12 150); margin-bottom: 1rem;">
+            Contact & Toegankelijkheid
+        </h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem; font-size: 1.125rem; color: oklch(0.45 0.05 140);">
+            Plan je bezoek aan Boeygem Bos
+        </p>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+            <div class="card" style="padding: 2rem;">
+                <h3 style="color: oklch(0.48 0.12 150); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i data-lucide="map-pin" style="width: 32px; height: 32px;"></i>
+                    Locatie
+                </h3>
+                <div style="width: 100%; height: 300px; background: oklch(0.92 0.03 130); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i data-lucide="map" style="width: 64px; height: 64px; color: oklch(0.75 0.11 230);"></i>
+                </div>
+                <p style="font-size: 1.125rem; color: oklch(0.35 0.03 140);">
+                    Adresgegevens worden binnenkort toegevoegd
+                </p>
+            </div>
+            <div class="card" style="padding: 2rem;">
+                <h3 style="color: oklch(0.48 0.12 150); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <i data-lucide="info" style="width: 32px; height: 32px;"></i>
+                    Bezoekersinfo
+                </h3>
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: oklch(0.55 0.09 60); margin-bottom: 0.75rem; font-size: 1.125rem;">Mag Wel</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="check" style="color: oklch(0.48 0.12 150); width: 20px; height: 20px;"></i>
+                            Wandelen en natuur observeren
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="check" style="color: oklch(0.48 0.12 150); width: 20px; height: 20px;"></i>
+                            Fotograferen
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="check" style="color: oklch(0.48 0.12 150); width: 20px; height: 20px;"></i>
+                            Educatieve activiteiten
+                        </li>
+                    </ul>
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="color: oklch(0.58 0.24 28.5); margin-bottom: 0.75rem; font-size: 1.125rem;">Mag Niet</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="x" style="color: oklch(0.58 0.24 28.5); width: 20px; height: 20px;"></i>
+                            Afval achterlaten
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <i data-lucide="x" style="color: oklch(0.58 0.24 28.5); width: 20px; height: 20px;"></i>
+                            Planten of dieren verstoren
+                        </li>
+                    </ul>
+                </div>
+                <div style="background: oklch(0.95 0.02 120); padding: 1.5rem; border-radius: var(--radius-md); border-left: 4px solid oklch(0.58 0.24 28.5);">
+                    <p style="margin: 0; font-size: 0.95rem; color: oklch(0.35 0.03 140);">
+                        ⚠️ <strong>Let op:</strong> Betreden op eigen risico. Volg de bosregels en respecteer de natuur.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 2rem;">
+                <div>
+                    <h3 style="color: oklch(0.75 0.11 230); margin-bottom: 1rem;">Boeygem Bos</h3>
+                    <p style="color: oklch(0.85 0.005 110); font-size: 1rem;">
+                        Een plek om te leren, ontdekken en genieten van de natuur.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: oklch(0.75 0.11 230); margin-bottom: 1rem;">Snelle Links</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;"><a href="#intro">Intro</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#gallery">Fotogalerij</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#nature">Natuur</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#bosklas">Bosklas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: oklch(0.75 0.11 230); margin-bottom: 1rem;">Contact</h4>
+                    <p style="color: oklch(0.85 0.005 110); font-size: 1rem;">
+                        Meer informatie volgt binnenkort
+                    </p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid oklch(0.35 0.03 140); padding-top: 1.5rem; text-align: center;">
+                <p style="color: oklch(0.7 0.01 130); margin: 0; font-size: 0.95rem;">
+                    © 2024 Boeygem Bos. Alle rechten voorbehouden.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('menuOverlay');
+            menu.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Smooth scroll for all anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on hero (subtle)
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero-section');
+            const scrolled = window.pageYOffset;
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.backgroundPositionY = scrolled * 0.3 + 'px';
+            }
+        });
+    </script>
+</body>
+</html>

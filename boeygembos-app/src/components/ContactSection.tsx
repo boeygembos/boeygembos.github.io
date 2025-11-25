@@ -1,4 +1,5 @@
 import { MapPin, Info, Check, X, Map } from 'lucide-react'
+import contactData from '../../content/contact.json'
 
 export default function ContactSection() {
   return (
@@ -28,7 +29,7 @@ export default function ContactSection() {
               <Map size={64} color="oklch(0.75 0.11 230)" />
             </div>
             <p style={{ fontSize: '1.125rem' }}>
-              Adresgegevens worden binnenkort toegevoegd
+              {contactData.address}
             </p>
           </div>
 
@@ -41,32 +42,24 @@ export default function ContactSection() {
             <div style={{ marginBottom: '2rem' }}>
               <h4 style={{ color: 'oklch(0.55 0.09 60)', marginBottom: '0.75rem', fontSize: '1.125rem' }}>Mag Wel</h4>
               <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ padding: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={20} color="oklch(0.48 0.12 150)" />
-                  Wandelen en natuur observeren
-                </li>
-                <li style={{ padding: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={20} color="oklch(0.48 0.12 150)" />
-                  Fotograferen
-                </li>
-                <li style={{ padding: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <Check size={20} color="oklch(0.48 0.12 150)" />
-                  Educatieve activiteiten
-                </li>
+                {contactData.rules.allowed.map((rule, index) => (
+                  <li key={index} style={{ padding: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <Check size={20} color="oklch(0.48 0.12 150)" />
+                    {rule}
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div style={{ marginBottom: '2rem' }}>
               <h4 style={{ color: 'oklch(0.58 0.24 28.5)', marginBottom: '0.75rem', fontSize: '1.125rem' }}>Mag Niet</h4>
               <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ padding: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <X size={20} color="oklch(0.58 0.24 28.5)" />
-                  Afval achterlaten
-                </li>
-                <li style={{ padding: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <X size={20} color="oklch(0.58 0.24 28.5)" />
-                  Planten of dieren verstoren
-                </li>
+                {contactData.rules.notAllowed.map((rule, index) => (
+                  <li key={index} style={{ padding: '0.5rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <X size={20} color="oklch(0.58 0.24 28.5)" />
+                    {rule}
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -76,9 +69,7 @@ export default function ContactSection() {
               borderRadius: 'var(--radius-md)',
               borderLeft: '4px solid oklch(0.58 0.24 28.5)'
             }}>
-              <p style={{ margin: 0, fontSize: '0.95rem' }}>
-                ⚠️ <strong>Let op:</strong> Betreden op eigen risico. Volg de bosregels en respecteer de natuur.
-              </p>
+              <p style={{ margin: 0, fontSize: '0.95rem' }} dangerouslySetInnerHTML={{ __html: contactData.legalNotice }} />
             </div>
           </div>
         </div>

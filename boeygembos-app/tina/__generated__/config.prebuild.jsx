@@ -1,21 +1,21 @@
+// tina/config.js
 import { defineConfig } from "tinacms";
-
-// Your hosting provider likely exposes this as an environment variable
-const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
-
-export default defineConfig({
+var branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+var config_default = defineConfig({
   branch,
-  clientId: process.env.TINA_CLIENT_ID || null, // Get this from tina.io
-  token: process.env.TINA_TOKEN || null, // Get this from tina.io
+  clientId: process.env.TINA_CLIENT_ID || null,
+  // Get this from tina.io
+  token: process.env.TINA_TOKEN || null,
+  // Get this from tina.io
   build: {
     outputFolder: "admin",
-    publicFolder: "public",
+    publicFolder: "public"
   },
   media: {
     tina: {
       mediaRoot: "images",
-      publicFolder: "public",
-    },
+      publicFolder: "public"
+    }
   },
   schema: {
     collections: [
@@ -30,7 +30,7 @@ export default defineConfig({
               return `/`;
             }
             return `/${document._sys.filename}`;
-          },
+          }
         },
         fields: [
           {
@@ -38,28 +38,28 @@ export default defineConfig({
             name: "title",
             label: "Titel",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "description",
             label: "Beschrijving",
             ui: {
-              component: "textarea",
-            },
+              component: "textarea"
+            }
           },
           {
             type: "image",
             name: "heroImage",
-            label: "Hero Afbeelding",
+            label: "Hero Afbeelding"
           },
           {
             type: "rich-text",
             name: "body",
             label: "Inhoud",
-            isBody: true,
-          },
-        ],
+            isBody: true
+          }
+        ]
       },
       {
         name: "plant",
@@ -72,37 +72,37 @@ export default defineConfig({
             name: "name",
             label: "Naam",
             isTitle: true,
-            required: true,
+            required: true
           },
           {
             type: "string",
             name: "scientificName",
-            label: "Wetenschappelijke Naam",
+            label: "Wetenschappelijke Naam"
           },
           {
             type: "string",
             name: "category",
             label: "Categorie",
-            options: ["Boom", "Plant", "Vogel", "Insect", "Zoogdier", "Fruit"],
+            options: ["Boom", "Plant", "Vogel", "Insect", "Zoogdier", "Fruit"]
           },
           {
             type: "image",
             name: "image",
-            label: "Afbeelding",
+            label: "Afbeelding"
           },
           {
             type: "string",
             name: "season",
             label: "Seizoen",
-            options: ["Lente", "Zomer", "Herfst", "Winter", "Alle seizoenen"],
+            options: ["Lente", "Zomer", "Herfst", "Winter", "Alle seizoenen"]
           },
           {
             type: "rich-text",
             name: "description",
             label: "Beschrijving",
-            isBody: true,
-          },
-        ],
+            isBody: true
+          }
+        ]
       },
       {
         name: "gallery",
@@ -110,13 +110,13 @@ export default defineConfig({
         path: "content",
         format: "json",
         match: {
-          include: "gallery",
+          include: "gallery"
         },
         ui: {
           allowedActions: {
             create: false,
-            delete: false,
-          },
+            delete: false
+          }
         },
         fields: [
           {
@@ -129,22 +129,22 @@ export default defineConfig({
                 type: "image",
                 name: "src",
                 label: "Foto",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "alt",
                 label: "Omschrijving",
-                required: true,
+                required: true
               },
               {
                 type: "string",
                 name: "caption",
-                label: "Bijschrift",
-              },
-            ],
-          },
-        ],
+                label: "Bijschrift"
+              }
+            ]
+          }
+        ]
       },
       {
         name: "bosklas",
@@ -152,25 +152,25 @@ export default defineConfig({
         path: "content",
         format: "json",
         match: {
-          include: "bosklas",
+          include: "bosklas"
         },
         ui: {
           allowedActions: {
             create: false,
-            delete: false,
-          },
+            delete: false
+          }
         },
         fields: [
           {
             type: "string",
             name: "title",
             label: "Titel",
-            required: true,
+            required: true
           },
           {
             type: "rich-text",
             name: "description",
-            label: "Beschrijving",
+            label: "Beschrijving"
           },
           {
             type: "object",
@@ -181,9 +181,9 @@ export default defineConfig({
               {
                 type: "string",
                 name: "text",
-                label: "Tekst",
-              },
-            ],
+                label: "Tekst"
+              }
+            ]
           },
           {
             type: "object",
@@ -194,16 +194,16 @@ export default defineConfig({
               {
                 type: "image",
                 name: "src",
-                label: "Foto",
+                label: "Foto"
               },
               {
                 type: "string",
                 name: "caption",
-                label: "Bijschrift",
-              },
-            ],
-          },
-        ],
+                label: "Bijschrift"
+              }
+            ]
+          }
+        ]
       },
       {
         name: "contact",
@@ -211,13 +211,13 @@ export default defineConfig({
         path: "content",
         format: "json",
         match: {
-          include: "contact",
+          include: "contact"
         },
         ui: {
           allowedActions: {
             create: false,
-            delete: false,
-          },
+            delete: false
+          }
         },
         fields: [
           {
@@ -225,8 +225,8 @@ export default defineConfig({
             name: "address",
             label: "Adres",
             ui: {
-              component: "textarea",
-            },
+              component: "textarea"
+            }
           },
           {
             type: "object",
@@ -237,26 +237,29 @@ export default defineConfig({
                 type: "string",
                 name: "allowed",
                 label: "Mag Wel",
-                list: true,
+                list: true
               },
               {
                 type: "string",
                 name: "notAllowed",
                 label: "Mag Niet",
-                list: true,
-              },
-            ],
+                list: true
+              }
+            ]
           },
           {
             type: "string",
             name: "legalNotice",
             label: "Wettelijke Kennisgeving",
             ui: {
-              component: "textarea",
-            },
-          },
-        ],
-      },
-    ],
-  },
+              component: "textarea"
+            }
+          }
+        ]
+      }
+    ]
+  }
 });
+export {
+  config_default as default
+};

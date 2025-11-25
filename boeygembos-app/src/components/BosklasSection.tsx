@@ -1,4 +1,5 @@
 import { CheckCircle, ArrowRight } from 'lucide-react'
+import bosklasData from '../../content/bosklas.json'
 
 export default function BosklasSection() {
   return (
@@ -12,8 +13,8 @@ export default function BosklasSection() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
         <div>
           <img
-            src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=600&fit=crop"
-            alt="Kinderen in het bos"
+            src={bosklasData.photos[0].src}
+            alt={bosklasData.photos[0].caption}
             style={{
               width: '100%',
               height: '450px',
@@ -25,25 +26,18 @@ export default function BosklasSection() {
         </div>
         <div>
           <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-            Bosklas - Leren in de Natuur
+            {bosklasData.title}
           </h2>
           <p style={{ fontSize: '1.125rem', marginBottom: '1.5rem', lineHeight: '1.8' }}>
-            Ons bosklas programma brengt kinderen in contact met de natuur. Van wilgenhutten bouwen tot
-            dieren spotten, onze educatieve programma's combineren plezier met leren.
+            {bosklasData.description}
           </p>
           <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
-            <li style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
-              <span>Praktische natuurlessen voor alle leeftijden</span>
-            </li>
-            <li style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
-              <span>Begeleiding door ervaren natuurgidsen</span>
-            </li>
-            <li style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
-              <span>Creatieve activiteiten en ontdekkingstochten</span>
-            </li>
+            {bosklasData.features.map((feature, index) => (
+              <li key={index} style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
+                <span>{feature.text}</span>
+              </li>
+            ))}
           </ul>
           <button className="btn-secondary">
             <ArrowRight size={20} />

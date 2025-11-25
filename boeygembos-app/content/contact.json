@@ -1,0 +1,15 @@
+{
+  "address": "Adresgegevens worden binnenkort toegevoegd",
+  "rules": {
+    "allowed": [
+      "Wandelen en natuur observeren",
+      "Fotograferen",
+      "Educatieve activiteiten"
+    ],
+    "notAllowed": [
+      "Afval achterlaten",
+      "Planten of dieren verstoren"
+    ]
+  },
+  "legalNotice": "⚠️ Let op: Betreden op eigen risico. Volg de bosregels en respecteer de natuur."
+}

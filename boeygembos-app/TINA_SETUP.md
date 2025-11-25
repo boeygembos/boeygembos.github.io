@@ -10,8 +10,10 @@ You've created a project on tina.io! Now let's connect it to your app.
 2. Navigate to **Settings** → **GitHub Connection**
 3. Click **Connect to GitHub** and authorize TinaCMS
 4. Select your repository: `boeygembos/boeygembos.github.io`
-5. Choose the branch: `main`
+5. Choose the branch: `release` (this is your production branch)
 6. Wait for the initial sync to complete
+
+**Note:** Your workflow uses the `release` branch for production builds. The `main` branch is for development. Make sure to connect the `release` branch to TinaCloud.
 
 ### Step 2: Get Your Credentials
 
@@ -105,11 +107,13 @@ This error occurs when building with TinaCMS. To fix it:
 1. Go to your [Tina.io project dashboard](https://app.tina.io/projects/fb5fff02-2fd0-422c-994c-7b2c1d795539/configuration)
 2. Navigate to **Settings** → **GitHub Connection**
 3. Click **Connect to GitHub** if not already connected
-4. Select your repository and the `main` branch
+4. Select your repository and the `release` branch (your production branch)
 5. Wait for TinaCloud to sync your branch
 6. Try building again with `npm run build`
 
-**Note:** This error only affects builds with TinaCMS admin. If you don't need the admin in production, use `npm run build:vite` instead.
+**Important:** Make sure you connect the `release` branch, not `main`. The GitHub Actions workflow builds from the `release` branch.
+
+**Alternative:** If you don't need the admin in production, use `npm run build:vite` instead.
 
 ## 📚 Next Steps
 

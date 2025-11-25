@@ -1,61 +1,54 @@
-import { Backpack, Palette, TreePine, Leaf } from 'lucide-react'
+import { CheckCircle, ArrowRight } from 'lucide-react'
 
 export default function BosklasSection() {
   return (
-    <section id="bosklas" className="section bg-muted">
-      <div className="container">
-        <div className="section-header">
-          <h2 className="section-title">Bosklas - Leren in de Natuur</h2>
-          <p className="section-subtitle">Educatieve programma's voor scholen en kinderen</p>
+    <section id="bosklas" style={{
+      background: 'linear-gradient(135deg, oklch(0.92 0.03 130) 0%, oklch(0.95 0.02 120) 100%)',
+      borderRadius: 'var(--radius-xl)',
+      padding: '3rem 2rem',
+      margin: '6rem 2rem',
+      maxWidth: '1400px'
+    }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+        <div>
+          <img
+            src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=600&fit=crop"
+            alt="Kinderen in het bos"
+            style={{
+              width: '100%',
+              height: '450px',
+              objectFit: 'cover',
+              borderRadius: 'var(--radius-lg)',
+              boxShadow: 'var(--shadow-xl)'
+            }}
+          />
         </div>
-        
-        <div className="bosklas-content">
-          <div className="bosklas-intro">
-            <p>
-              Onze Bosklas biedt een unieke leerervaring waar kinderen de natuur kunnen ontdekken door middel van spel, creativiteit en educatie. Elk bezoek is een avontuur vol ontdekkingen!
-            </p>
-          </div>
-
-          <div className="features-grid">
-            <div className="feature-card">
-              <div className="feature-icon">
-                <TreePine size={32} />
-              </div>
-              <h3>Bomen Herkennen</h3>
-              <p>Leer de verschillende boomsoorten kennen en ontdek hun unieke eigenschappen</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <Leaf size={32} />
-              </div>
-              <h3>Natuur Exploreren</h3>
-              <p>Ontdek planten, insecten en dieren in hun natuurlijke habitat</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <Palette size={32} />
-              </div>
-              <h3>Kunstwerken Maken</h3>
-              <p>Creëer prachtige kunstwerken met natuurlijke materialen</p>
-            </div>
-            <div className="feature-card">
-              <div className="feature-icon">
-                <Backpack size={32} />
-              </div>
-              <h3>Boshut Bouwen</h3>
-              <p>Werk samen om een echte boshut te bouwen met wilgentakken</p>
-            </div>
-          </div>
-
-          <div className="bosklas-gallery">
-            <h3 style={{ textAlign: 'center', marginBottom: '2rem' }}>Indrukken van Onze Bosklas</h3>
-            <div className="gallery-grid">
-              <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=300&fit=crop" alt="Kinderen in het bos" />
-              <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400&h=300&fit=crop" alt="Natuur kunstwerk" />
-              <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=300&fit=crop" alt="Boshut bouwen" />
-              <img src="https://images.unsplash.com/photo-1536244636800-a3f74db0f3cf?w=400&h=300&fit=crop" alt="Kinderen leren" />
-            </div>
-          </div>
+        <div>
+          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
+            Bosklas - Leren in de Natuur
+          </h2>
+          <p style={{ fontSize: '1.125rem', marginBottom: '1.5rem', lineHeight: '1.8' }}>
+            Ons bosklas programma brengt kinderen in contact met de natuur. Van wilgenhutten bouwen tot
+            dieren spotten, onze educatieve programma's combineren plezier met leren.
+          </p>
+          <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
+            <li style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
+              <span>Praktische natuurlessen voor alle leeftijden</span>
+            </li>
+            <li style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
+              <span>Begeleiding door ervaren natuurgidsen</span>
+            </li>
+            <li style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+              <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
+              <span>Creatieve activiteiten en ontdekkingstochten</span>
+            </li>
+          </ul>
+          <button className="btn-secondary">
+            <ArrowRight size={20} />
+            Meer Over Bosklas
+          </button>
         </div>
       </div>
     </section>

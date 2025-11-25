@@ -1,30 +1,30 @@
-import { TreeDeciduous, Users, Heart } from 'lucide-react'
+import { TreePine, Bug, Map } from 'lucide-react'
 
 export default function QuickInfo() {
   return (
     <section className="quick-info">
       <div className="container">
         <div className="info-grid">
-          <div className="info-card">
+          <div className="info-card stagger-item">
             <div className="info-icon">
-              <TreeDeciduous size={40} />
+              <TreePine size={64} />
             </div>
-            <h3>2000+ Bomen</h3>
-            <p>Een divers bos met meer dan 2000 zorgvuldig geplante bomen</p>
+            <h3>Over het Bos</h3>
+            <p>Ontdek hoe Boeygem Bos ontstond en evolueerde</p>
           </div>
-          <div className="info-card">
+          <div className="info-card stagger-item">
             <div className="info-icon">
-              <Users size={40} />
+              <Bug size={64} />
             </div>
-            <h3>Voor Iedereen</h3>
-            <p>Toegankelijk voor scholen, families en natuurliefhebbers</p>
+            <h3>Natuur & Dieren</h3>
+            <p>Leer over planten en dieren in het bos</p>
           </div>
-          <div className="info-card">
+          <div className="info-card stagger-item">
             <div className="info-icon">
-              <Heart size={40} />
+              <Map size={64} />
             </div>
-            <h3>Met Liefde Gemaakt</h3>
-            <p>Gecreëerd door lokale vrijwilligers en natuurliefhebbers</p>
+            <h3>Bezoek Info</h3>
+            <p>Praktische informatie voor je bezoek</p>
           </div>
         </div>
       </div>

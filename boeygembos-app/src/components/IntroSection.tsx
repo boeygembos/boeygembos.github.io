@@ -3,23 +3,29 @@ export default function IntroSection() {
     <section id="intro" className="section">
       <div className="container">
         <div className="section-header">
-          <h2 className="section-title">Hoe het Bos Ontstond</h2>
-          <p className="section-subtitle">Een verhaal van passie, natuur en gemeenschap</p>
+          <h2 className="section-title">Hoe Het Bos Er Kwam</h2>
+          <p className="section-subtitle">
+            Het verhaal van Boeygem Bos begint jaren geleden, toen een visie om natuur terug te brengen naar onze gemeenschap werkelijkheid werd. Ontdek de reis van een leeg veld naar een bloeiend ecosysteem.
+          </p>
         </div>
-        <div className="content-wrapper">
-          <div className="content-text">
-            <p>
-              Boeygem Bos is ontstaan uit de droom van enkele gepassioneerde natuurliefhebbers die een plek wilden creëren waar kinderen konden leren over de natuur en het belang van biodiversiteit.
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div className="info-card" style={{ padding: '3rem' }}>
+            <img
+              src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&h=500&fit=crop"
+              alt="Bos geschiedenis"
+              style={{
+                width: '100%',
+                height: '400px',
+                objectFit: 'cover',
+                borderRadius: 'var(--radius-md)',
+                marginBottom: '2rem'
+              }}
+            />
+            <p style={{ fontSize: '1.125rem', lineHeight: '1.8' }}>
+              Boeygem Bos is meer dan een verzameling bomen. Het is een levend klaslokaal, een speelplaats voor ontdekking,
+              en een thuis voor talloze planten en dieren. Door de jaren heen is het bos gegroeid en veranderd, met hulp
+              van vrijwilligers, scholen en de gemeenschap.
             </p>
-            <p>
-              In 2018 begon het project met de aankoop van een verlaten stuk grond. Door de inzet van vrijwilligers en steun van de lokale gemeenschap, werd dit stuk grond getransformeerd in een prachtig bos met meer dan 2000 bomen.
-            </p>
-            <p>
-              Vandaag is Boeygem Bos een levendige plek waar kinderen kunnen spelen, leren en ontdekken. Het bos bevat verschillende soorten bomen, struiken en planten, en is een thuis voor vele dieren.
-            </p>
-          </div>
-          <div className="content-image">
-            <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=600&h=400&fit=crop" alt="Boeygem Bos" />
           </div>
         </div>
       </div>

@@ -24,7 +24,7 @@ export default function Hero() {
     <section id="home" className="hero" ref={heroRef}>
       <div className="hero-overlay"></div>
       <div className="hero-content">
-        <h1 className="hero-title">Welkom bij Boeygem Bos</h1>
+        <h1 className="hero-title">Welkom bij Boeygem Bos!</h1>
         <p className="hero-subtitle">Ontdek de natuur, leer over wilde dieren en planten</p>
         <button className="btn btn-primary" onClick={scrollToIntro}>
           <Compass size={20} />

@@ -31,16 +31,16 @@ jobs:
       - name: Build
         run: npm run build
       
-      - name: Check if dist exists (DEBUG)
-        run: |
-          if [ -d "dist" ]; then
-            echo "dist folder exists"
-            ls -la dist/
-          else
-            echo "dist folder NOT found"
-            echo "Current directory contents:"
-            ls -la
-          fi
+      # - name: Check if dist exists (DEBUG)
+      #   run: |
+      #     if [ -d "dist" ]; then
+      #       echo "dist folder exists"
+      #       ls -la dist/
+      #     else
+      #       echo "dist folder NOT found"
+      #       echo "Current directory contents:"
+      #       ls -la
+      #     fi
       
       - name: Setup SSH
         working-directory: ${{ github.workspace }}  # Override for this step (need to be in root)

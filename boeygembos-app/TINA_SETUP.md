@@ -66,10 +66,9 @@ When ready to deploy:
 npm run build
 ```
 
-This will:
-1. Build TinaCMS schema
-2. Build your React app
-3. Output to `dist/` folder
+This will build your React app and output to `dist/` folder.
+
+**Note:** The standard build command uses only Vite and does not include the TinaCMS admin panel in production. This is perfect for static site deployment where content is managed locally via JSON files. The TinaCMS admin is only available in development mode (`npm run dev`).
 
 ## 🔧 Troubleshooting
 

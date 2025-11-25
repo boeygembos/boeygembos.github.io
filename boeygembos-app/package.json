@@ -4,9 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "tinacms dev -c \"vite\"",
+    "dev": "npx @tinacms/cli dev -c \"vite\"",
     "dev:vite": "vite",
-    "build": "tinacms build && vite build",
+    "build": "vite build",
+    "build:tina": "npx @tinacms/cli build && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

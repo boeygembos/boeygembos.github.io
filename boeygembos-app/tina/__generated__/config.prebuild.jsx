@@ -1,6 +1,6 @@
 // tina/config.js
 import { defineConfig } from "tinacms";
-var branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "main";
+var branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || "release";
 var config_default = defineConfig({
   branch,
   clientId: process.env.TINA_CLIENT_ID || null,

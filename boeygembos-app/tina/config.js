@@ -10,6 +10,7 @@ export default defineConfig({
   build: {
     outputFolder: "admin",
     publicFolder: "public",
+    basePath: "boeygembos-app", // Path from repo root to this app folder
   },
   media: {
     tina: {

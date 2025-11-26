@@ -1,4 +1,4 @@
-import { MapPin, Info, Check, X, Map } from 'lucide-react'
+import { MapPin, Info, Check, X } from 'lucide-react'
 import contactData from '../../content/contact.json'
 
 export default function ContactSection() {
@@ -19,14 +19,20 @@ export default function ContactSection() {
             <div style={{
               width: '100%',
               height: '300px',
-              background: 'oklch(0.92 0.03 130)',
               borderRadius: 'var(--radius-md)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
+              overflow: 'hidden',
               marginBottom: '1.5rem'
             }}>
-              <Map size={64} color="oklch(0.75 0.11 230)" />
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2510.981540986352!2d3.9574804137024078!3d50.99801324766794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3990e52e128db%3A0xe3a33d4816ef0b4d!2sBoeygem%20Bos!5e0!3m2!1sen!2sbe!4v1764164448091!5m2!1sen!2sbe"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Boeygem Bos Locatie"
+              />
             </div>
             <p style={{ fontSize: '1.125rem' }}>
               {contactData.address}

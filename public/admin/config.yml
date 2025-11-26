@@ -23,6 +23,7 @@ collections:
           - { label: "Titel", name: "title", widget: "string", required: true }
           - { label: "Ondertitel", name: "subtitle", widget: "string", required: true }
           - { label: "Knop Tekst", name: "buttonText", widget: "string", required: true }
+          - { label: "Achtergrond Afbeelding", name: "backgroundImage", widget: "image", required: true }
 
   # Intro section
   - name: "intro"
@@ -55,20 +56,6 @@ collections:
               - { label: "Icoon", name: "icon", widget: "select", options: ["Flower2", "Bird", "Apple"], required: true }
               - { label: "Titel", name: "title", widget: "string", required: true }
               - { label: "Beschrijving", name: "description", widget: "text", required: true }
-
-  # Pages collection (for future use)
-  - name: "pages"
-    label: "Pagina's"
-    folder: "content/pages"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Titel", name: "title", widget: "string", required: true }
-      - { label: "Beschrijving", name: "description", widget: "text", required: false }
-      - { label: "Hero Afbeelding", name: "heroImage", widget: "image", required: false }
-      - { label: "Inhoud", name: "body", widget: "markdown", required: false }
 
   # Plants collection (for future use)
   - name: "plants"

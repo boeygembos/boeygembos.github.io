@@ -22,7 +22,17 @@ export default function Hero() {
   }
 
   return (
-    <section id="home" className="hero" ref={heroRef}>
+    <section
+      id="home"
+      className="hero"
+      ref={heroRef}
+      style={{
+        backgroundImage: `url('${heroData.backgroundImage}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="hero-overlay"></div>
       <div className="hero-content">
         <h1 className="hero-title">{heroData.title}</h1>

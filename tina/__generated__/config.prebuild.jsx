@@ -9,7 +9,9 @@ var config_default = defineConfig({
   // Get this from tina.io
   build: {
     outputFolder: "admin",
-    publicFolder: "public"
+    publicFolder: "public",
+    basePath: "/"
+    // Path from repo root to this app folder
   },
   media: {
     tina: {

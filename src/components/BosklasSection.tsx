@@ -3,13 +3,14 @@ import bosklasData from '../../content/bosklas.json'
 
 export default function BosklasSection() {
   return (
-    <section id="bosklas" style={{
-      background: 'linear-gradient(135deg, oklch(0.92 0.03 130) 0%, oklch(0.95 0.02 120) 100%)',
-      borderRadius: 'var(--radius-xl)',
-      padding: '3rem 2rem',
-      margin: '6rem 2rem',
-      maxWidth: '1400px'
-    }}>
+    <div style={{ padding: '0 2rem' }}>
+      <section id="bosklas" style={{
+        background: 'linear-gradient(135deg, oklch(0.92 0.03 130) 0%, oklch(0.95 0.02 120) 100%)',
+        borderRadius: 'var(--radius-xl)',
+        padding: '3rem 2rem',
+        margin: '6rem auto',
+        maxWidth: '1400px'
+      }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
         <div>
           <img
@@ -46,5 +47,6 @@ export default function BosklasSection() {
         </div>
       </div>
     </section>
+    </div>
   )
 }

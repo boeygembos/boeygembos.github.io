@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: boeygembos/boeygembos.github.io
-  branch: release  # or whatever branch you use
+  branch: main
   base_url: https://oauth.boeygembos.be
   auth_endpoint: auth
 
@@ -93,6 +93,12 @@ collections:
             name: "rules"
             widget: "object"
             fields:
-              - { label: "Mag Wel", name: "allowed", widget: "list", field: { label: "Regel", name: "rule", widget: "string" } }
-              - { label: "Mag Niet", name: "notAllowed", widget: "list", field: { label: "Regel", name: "rule", widget: "string" } }
+              - label: "Mag Wel"
+                name: "allowed"
+                widget: "list"
+                field: { label: "Regel", name: "item", widget: "string" }
+              - label: "Mag Niet"
+                name: "notAllowed"
+                widget: "list"
+                field: { label: "Regel", name: "item", widget: "string" }
           - { label: "Wettelijke Kennisgeving", name: "legalNotice", widget: "text", required: false }

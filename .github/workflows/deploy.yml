@@ -10,9 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     
     # Set default working directory for all steps
-    defaults:
-      run:
-        working-directory: boeygembos-app
+    # defaults:
+    #   run:
+    #     working-directory: boeygembos-app
     
     steps:
       - name: Checkout code

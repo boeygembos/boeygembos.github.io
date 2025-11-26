@@ -11,7 +11,11 @@ You've created a project on tina.io! Now let's connect it to your app.
 3. Click **Connect to GitHub** and authorize TinaCMS
 4. Select your repository: `boeygembos/boeygembos.github.io`
 5. Choose the branch: `release` (this is your production branch)
-6. Wait for the initial sync to complete
+6. **IMPORTANT:** Click on **Advanced Settings** and set:
+   - **Path to Tina Config**: `boeygembos-app/tina/config.js`
+
+   This tells TinaCloud where to find your config file since your app is in a subfolder.
+7. Wait for the initial sync to complete
 
 **Note:** Your workflow uses the `release` branch for production builds. The `main` branch is for development. Make sure to connect the `release` branch to TinaCloud.
 

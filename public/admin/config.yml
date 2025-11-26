@@ -54,7 +54,7 @@ collections:
             name: "photos"
             widget: "list"
             fields:
-              - { label: "Foto URL", name: "src", widget: "string", required: true }
+              - { label: "Foto", name: "src", widget: "image", required: true }
               - { label: "Alt tekst", name: "alt", widget: "string", required: true }
               - { label: "Bijschrift", name: "caption", widget: "string", required: false }
 
@@ -77,7 +77,7 @@ collections:
             name: "photos"
             widget: "list"
             fields:
-              - { label: "Foto URL", name: "src", widget: "string" }
+              - { label: "Foto", name: "src", widget: "image" }
               - { label: "Bijschrift", name: "caption", widget: "string", required: false }
 
   # Contact (single file)

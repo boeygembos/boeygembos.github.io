@@ -1,0 +1,98 @@
+backend:
+  name: github
+  repo: boeygembos/boeygembos.github.io
+  branch: release  # or whatever branch you use
+  base_url: https://oauth.boeygembos.be
+  auth_endpoint: auth
+
+# For local development testing without GitHub
+# local_backend: true
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  # Pages collection (for future use)
+  - name: "pages"
+    label: "Pagina's"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Titel", name: "title", widget: "string", required: true }
+      - { label: "Beschrijving", name: "description", widget: "text", required: false }
+      - { label: "Hero Afbeelding", name: "heroImage", widget: "image", required: false }
+      - { label: "Inhoud", name: "body", widget: "markdown", required: false }
+
+  # Plants collection (for future use)
+  - name: "plants"
+    label: "Planten & Dieren"
+    folder: "content/plants"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    format: "frontmatter"
+    fields:
+      - { label: "Naam", name: "name", widget: "string", required: true }
+      - { label: "Wetenschappelijke Naam", name: "scientificName", widget: "string", required: false }
+      - { label: "Categorie", name: "category", widget: "select", options: ["Boom", "Plant", "Vogel", "Insect", "Zoogdier", "Fruit"], required: false }
+      - { label: "Afbeelding", name: "image", widget: "image", required: false }
+      - { label: "Seizoen", name: "season", widget: "select", options: ["Lente", "Zomer", "Herfst", "Winter", "Alle seizoenen"], required: false }
+      - { label: "Beschrijving", name: "description", widget: "markdown", required: false }
+
+  # Gallery (single file)
+  - name: "gallery"
+    label: "Fotogalerij"
+    files:
+      - label: "Fotogalerij"
+        name: "gallery"
+        file: "content/gallery.json"
+        fields:
+          - label: "Foto's"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Foto URL", name: "src", widget: "string", required: true }
+              - { label: "Alt tekst", name: "alt", widget: "string", required: true }
+              - { label: "Bijschrift", name: "caption", widget: "string", required: false }
+
+  # Bosklas (single file)
+  - name: "bosklas"
+    label: "Bosklas"
+    files:
+      - label: "Bosklas Informatie"
+        name: "bosklas"
+        file: "content/bosklas.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", required: true }
+          - { label: "Beschrijving", name: "description", widget: "text", required: false }
+          - label: "Kenmerken"
+            name: "features"
+            widget: "list"
+            fields:
+              - { label: "Tekst", name: "text", widget: "string" }
+          - label: "Foto's"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Foto URL", name: "src", widget: "string" }
+              - { label: "Bijschrift", name: "caption", widget: "string", required: false }
+
+  # Contact (single file)
+  - name: "contact"
+    label: "Contact"
+    files:
+      - label: "Contact Informatie"
+        name: "contact"
+        file: "content/contact.json"
+        fields:
+          - { label: "Adres", name: "address", widget: "text", required: false }
+          - label: "Regels"
+            name: "rules"
+            widget: "object"
+            fields:
+              - { label: "Mag Wel", name: "allowed", widget: "list", field: { label: "Regel", name: "rule", widget: "string" } }
+              - { label: "Mag Niet", name: "notAllowed", widget: "list", field: { label: "Regel", name: "rule", widget: "string" } }
+          - { label: "Wettelijke Kennisgeving", name: "legalNotice", widget: "text", required: false }

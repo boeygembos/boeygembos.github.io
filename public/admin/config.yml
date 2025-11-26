@@ -12,6 +12,50 @@ media_folder: "public/images"
 public_folder: "/images"
 
 collections:
+  # Hero section
+  - name: "hero"
+    label: "Hero Sectie"
+    files:
+      - label: "Hero"
+        name: "hero"
+        file: "content/hero.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", required: true }
+          - { label: "Ondertitel", name: "subtitle", widget: "string", required: true }
+          - { label: "Knop Tekst", name: "buttonText", widget: "string", required: true }
+
+  # Intro section
+  - name: "intro"
+    label: "Intro Sectie"
+    files:
+      - label: "Intro"
+        name: "intro"
+        file: "content/intro.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", required: true }
+          - { label: "Ondertitel", name: "subtitle", widget: "text", required: true }
+          - { label: "Afbeelding", name: "image", widget: "image", required: true }
+          - { label: "Afbeelding Alt Tekst", name: "imageAlt", widget: "string", required: true }
+          - { label: "Inhoud", name: "content", widget: "text", required: true }
+
+  # Nature section
+  - name: "nature"
+    label: "Natuur Sectie"
+    files:
+      - label: "Natuur Info"
+        name: "nature"
+        file: "content/nature.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", required: true }
+          - { label: "Ondertitel", name: "subtitle", widget: "string", required: true }
+          - label: "Kaarten"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Icoon", name: "icon", widget: "select", options: ["Flower2", "Bird", "Apple"], required: true }
+              - { label: "Titel", name: "title", widget: "string", required: true }
+              - { label: "Beschrijving", name: "description", widget: "text", required: true }
+
   # Pages collection (for future use)
   - name: "pages"
     label: "Pagina's"

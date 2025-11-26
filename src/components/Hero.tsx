@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Compass, ChevronDown } from 'lucide-react'
+import heroData from '../../content/hero.json'
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null)
@@ -24,11 +25,11 @@ export default function Hero() {
     <section id="home" className="hero" ref={heroRef}>
       <div className="hero-overlay"></div>
       <div className="hero-content">
-        <h1 className="hero-title">Welkom bij Boeygem Bos!</h1>
-        <p className="hero-subtitle">Ontdek de natuur, leer over wilde dieren en planten</p>
+        <h1 className="hero-title">{heroData.title}</h1>
+        <p className="hero-subtitle">{heroData.subtitle}</p>
         <button className="btn btn-primary" onClick={scrollToIntro}>
           <Compass size={20} />
-          Verken het Bos
+          {heroData.buttonText}
         </button>
       </div>
       <div className="scroll-indicator">

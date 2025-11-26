@@ -1,0 +1,21 @@
+{
+  "title": "Planten & Dieren",
+  "subtitle": "Ontdek de rijke biodiversiteit van Boeygem Bos",
+  "cards": [
+    {
+      "icon": "Flower2",
+      "title": "Planten",
+      "description": "Van inheemse bomen tot wilde bloemen, het bos herbergt een verscheidenheid aan plantensoorten die door de seizoenen veranderen."
+    },
+    {
+      "icon": "Bird",
+      "title": "Vogels",
+      "description": "Luister naar het gezang van verschillende vogelsoorten die in het bos leven en broeden."
+    },
+    {
+      "icon": "Apple",
+      "title": "Fruit & Noten",
+      "description": "Ontdek de eetbare vruchten en noten die in het seizoen te vinden zijn in verschillende delen van het bos."
+    }
+  ]
+}

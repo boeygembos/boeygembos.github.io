@@ -11,7 +11,7 @@ export default function BosklasSection() {
         margin: '6rem auto',
         maxWidth: '1400px'
       }}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
+      <div className="bosklas-content">
         <div>
           <img
             src={bosklasData.photos[0].src}

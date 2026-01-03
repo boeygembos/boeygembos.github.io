@@ -1,4 +1,4 @@
-import { X, Home, BookOpen, Camera, TreeDeciduous, Flower2, Apple, Video, Backpack, MapPin } from 'lucide-react'
+import { X, Home, BookOpen, Camera, Flower2, Backpack, MapPin } from 'lucide-react'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -32,23 +32,11 @@ export default function MobileMenu({ isOpen, toggleMenu }: MobileMenuProps) {
         </a>
         <a href="#gallery" className="nav-item" onClick={toggleMenu}>
           <Camera size={24} />
-          <span>Fotogalerij</span>
-        </a>
-        <a href="#info" className="nav-item" onClick={toggleMenu}>
-          <TreeDeciduous size={24} />
-          <span>Info Bos</span>
+          <span>Galerij</span>
         </a>
         <a href="#nature" className="nav-item" onClick={toggleMenu}>
           <Flower2 size={24} />
-          <span>Planten & Dieren</span>
-        </a>
-        <a href="#fruit" className="nav-item" onClick={toggleMenu}>
-          <Apple size={24} />
-          <span>Fruit in het Bos</span>
-        </a>
-        <a href="#video" className="nav-item" onClick={toggleMenu}>
-          <Video size={24} />
-          <span>Video</span>
+          <span>Natuur</span>
         </a>
         <a href="#bosklas" className="nav-item" onClick={toggleMenu}>
           <Backpack size={24} />

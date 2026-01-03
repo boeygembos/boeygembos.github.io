@@ -343,6 +343,17 @@ header {
 .bosklas-content {
   max-width: 1000px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .bosklas-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
 }
 
 .bosklas-intro {

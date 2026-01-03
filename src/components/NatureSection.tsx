@@ -16,13 +16,13 @@ export default function NatureSection() {
           <p className="section-subtitle">{natureData.subtitle}</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+        <div className="auto-grid">
           {natureData.cards.map((card, index) => {
             const IconComponent = iconMap[card.icon]
             return (
-              <div key={index} className="info-card" style={{ padding: '2rem' }}>
-                {IconComponent && <IconComponent size={48} color="oklch(0.48 0.12 150)" style={{ marginBottom: '1rem' }} />}
-                <h3 style={{ marginBottom: '0.75rem' }}>{card.title}</h3>
+              <div key={index} className="card card--centered p-m">
+                {IconComponent && <IconComponent size={48} color="oklch(0.48 0.12 150)" className="mb-s" />}
+                <h3 className="mb-s">{card.title}</h3>
                 <p>{card.description}</p>
               </div>
             )

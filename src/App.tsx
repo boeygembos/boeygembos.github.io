@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './theme.css'
+import './cube.css'
 import './styles.css'
 import Header from './components/Header'
 import Hero from './components/Hero'

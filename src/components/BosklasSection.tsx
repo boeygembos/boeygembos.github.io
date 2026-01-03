@@ -3,59 +3,47 @@ import bosklasData from '../../content/bosklas.json'
 
 export default function BosklasSection() {
   return (
-    <div style={{ padding: '0 2rem' }}>
-      <section id="bosklas" style={{
-        background: 'linear-gradient(135deg, oklch(0.92 0.03 130) 0%, oklch(0.95 0.02 120) 100%)',
-        borderRadius: 'var(--radius-xl)',
-        padding: '3rem 2rem',
-        margin: '6rem auto',
-        maxWidth: '1400px'
-      }}>
-      <div className="bosklas-content">
-        <div>
-          <img
-            src={bosklasData.photos[0].src}
-            alt={bosklasData.photos[0].caption}
-            style={{
-              width: '100%',
-              height: '450px',
-              objectFit: 'cover',
-              borderRadius: 'var(--radius-lg)',
-              boxShadow: 'var(--shadow-xl)'
-            }}
-          />
-        </div>
-        <div>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>
-            {bosklasData.title}
-          </h2>
-          <p style={{ fontSize: '1.125rem', marginBottom: '1.5rem', lineHeight: '1.8' }}>
-            {bosklasData.description}
-          </p>
-          <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
-            {bosklasData.features.map((feature, index) => (
-              <li key={index} style={{ padding: '0.75rem 0', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
-                <span>{feature.text}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-          <div style={{ gridColumn: '1 / 3'}}>
-          <details className="bosklas-details">
-            <summary className="btn-secondary">
-              <ArrowRight size={20} />
-              Meer Over Bosklassen
-            </summary>
-            <div className="bosklas-expanded-content">
-              {bosklasData.detailedInfo && bosklasData.detailedInfo.split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
+    <div className="px-m">
+      <section id="bosklas" className="section-wrapper">
+        <div className="grid-2">
+          <div>
+            <img
+              src={bosklasData.photos[0].src}
+              alt={bosklasData.photos[0].caption}
+              className="image-card"
+            />
+          </div>
+          <div className="stack">
+            <h2 className="section-heading">
+              {bosklasData.title}
+            </h2>
+            <p className="section-description">
+              {bosklasData.description}
+            </p>
+            <ul className="feature-list mb-m">
+              {bosklasData.features.map((feature, index) => (
+                <li key={index} className="feature-list__item">
+                  <CheckCircle size={24} color="oklch(0.48 0.12 150)" />
+                  <span>{feature.text}</span>
+                </li>
               ))}
-            </div>
-          </details>
+            </ul>
+          </div>
+          <div data-span-desktop="full">
+            <details className="details-expand">
+              <summary className="btn">
+                <ArrowRight size={20} />
+                Meer Over Bosklassen
+              </summary>
+              <div className="details-expand__content">
+                {bosklasData.detailedInfo && bosklasData.detailedInfo.split('\n\n').map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
+              </div>
+            </details>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   )
 }

@@ -43,12 +43,6 @@ export default function Header({ toggleMenu }: HeaderProps) {
         <button
           className="menu-toggle"
           onClick={toggleMenu}
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: '0.5rem'
-          }}
         >
           <Menu size={32} color="oklch(0.48 0.12 150)" />
         </button>

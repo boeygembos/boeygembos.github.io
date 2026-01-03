@@ -10,20 +10,15 @@ export default function IntroSection() {
             {introData.subtitle}
           </p>
         </div>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <div className="info-card" style={{ padding: '3rem' }}>
+        <div className="max-w-prose mx-auto" style={{ maxWidth: '900px' }}>
+          <div className="card p-l">
             <img
               src={introData.image}
               alt={introData.imageAlt}
-              style={{
-                width: '100%',
-                height: '400px',
-                objectFit: 'cover',
-                borderRadius: 'var(--radius-md)',
-                marginBottom: '2rem'
-              }}
+              className="w-full radius-md mb-m"
+              style={{ height: '400px', objectFit: 'cover' }}
             />
-            <p style={{ fontSize: '1.125rem', lineHeight: '1.8' }}>
+            <p className="section-description">
               {introData.content}
             </p>
           </div>

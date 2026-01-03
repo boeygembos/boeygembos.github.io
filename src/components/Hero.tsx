@@ -37,13 +37,13 @@ export default function Hero() {
       <div className="hero-content">
         <h1 className="hero-title">{heroData.title}</h1>
         <p className="hero-subtitle">{heroData.subtitle}</p>
-        <button className="btn btn-primary" onClick={scrollToIntro}>
+        <button className="btn" onClick={scrollToIntro}>
           <Compass size={20} />
           {heroData.buttonText}
         </button>
       </div>
       <div className="scroll-indicator">
-        <ChevronDown size={40} color="white" style={{ opacity: 0.8 }} />
+        <ChevronDown size={40} color="white" />
       </div>
     </section>
   )

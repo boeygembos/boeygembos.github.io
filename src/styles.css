@@ -346,13 +346,69 @@ header {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
-  align-items: center;
+  align-items: start;
 }
 
 @media (min-width: 768px) {
   .bosklas-content {
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    gap: 1rem 3rem;
+  }
+}
+
+.bosklas-details {
+  margin-top: 1rem;
+}
+
+.bosklas-details summary {
+  cursor: pointer;
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bosklas-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.bosklas-details[open] summary svg {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
+
+.bosklas-details summary svg {
+  transition: transform 0.3s ease;
+}
+
+.bosklas-expanded-content {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: oklch(0.99 0.005 110);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid oklch(0.48 0.12 150);
+  animation: slideDown 0.3s ease-out;
+}
+
+.bosklas-expanded-content p {
+  margin-bottom: 1rem;
+  line-height: 1.8;
+  color: oklch(0.35 0.03 140);
+  white-space: pre-line;
+}
+
+.bosklas-expanded-content p:last-child {
+  margin-bottom: 0;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

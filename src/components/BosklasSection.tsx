@@ -40,10 +40,19 @@ export default function BosklasSection() {
               </li>
             ))}
           </ul>
-          <button className="btn-secondary">
-            <ArrowRight size={20} />
-            Meer Over Bosklas
-          </button>
+        </div>
+          <div style={{ gridColumn: '1 / 3'}}>
+          <details className="bosklas-details">
+            <summary className="btn-secondary">
+              <ArrowRight size={20} />
+              Meer Over Bosklassen
+            </summary>
+            <div className="bosklas-expanded-content">
+              {bosklasData.detailedInfo && bosklasData.detailedInfo.split('\n\n').map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+          </details>
         </div>
       </div>
     </section>

@@ -104,6 +104,7 @@ collections:
             widget: "list"
             fields:
               - { label: "Tekst", name: "text", widget: "string" }
+          - { label: "Gedetailleerde Informatie (Uitklapbaar)", name: "detailedInfo", widget: "text", required: false, hint: "Deze tekst verschijnt wanneer bezoekers op 'Meer Over Bosklas' klikken. Gebruik dubbele enters voor nieuwe paragrafen." }
           - label: "Foto's"
             name: "photos"
             widget: "list"

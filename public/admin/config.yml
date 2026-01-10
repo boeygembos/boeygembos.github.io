@@ -14,7 +14,7 @@ public_folder: "/images"
 collections:
   # Hero section
   - name: "hero"
-    label: "Hero Sectie"
+    label: "Banner en Titel"
     files:
       - label: "Hero"
         name: "hero"
@@ -27,7 +27,7 @@ collections:
 
   # Intro section
   - name: "intro"
-    label: "Intro Sectie"
+    label: "Over het bos"
     files:
       - label: "Intro"
         name: "intro"
@@ -38,56 +38,6 @@ collections:
           - { label: "Afbeelding", name: "image", widget: "image", required: true }
           - { label: "Afbeelding Alt Tekst", name: "imageAlt", widget: "string", required: true }
           - { label: "Inhoud", name: "content", widget: "text", required: true }
-
-  # Nature section
-  - name: "nature"
-    label: "Natuur Sectie"
-    files:
-      - label: "Natuur Info"
-        name: "nature"
-        file: "content/nature.json"
-        fields:
-          - { label: "Titel", name: "title", widget: "string", required: true }
-          - { label: "Ondertitel", name: "subtitle", widget: "string", required: true }
-          - label: "Kaarten"
-            name: "cards"
-            widget: "list"
-            fields:
-              - { label: "Icoon", name: "icon", widget: "select", options: ["Flower2", "Bird", "Apple"], required: true }
-              - { label: "Titel", name: "title", widget: "string", required: true }
-              - { label: "Beschrijving", name: "description", widget: "text", required: true }
-
-  # Plants collection (for future use)
-  - name: "plants"
-    label: "Planten & Dieren"
-    folder: "content/plants"
-    create: true
-    slug: "{{slug}}"
-    extension: "md"
-    format: "frontmatter"
-    fields:
-      - { label: "Naam", name: "name", widget: "string", required: true }
-      - { label: "Wetenschappelijke Naam", name: "scientificName", widget: "string", required: false }
-      - { label: "Categorie", name: "category", widget: "select", options: ["Boom", "Plant", "Vogel", "Insect", "Zoogdier", "Fruit"], required: false }
-      - { label: "Afbeelding", name: "image", widget: "image", required: false }
-      - { label: "Seizoen", name: "season", widget: "select", options: ["Lente", "Zomer", "Herfst", "Winter", "Alle seizoenen"], required: false }
-      - { label: "Beschrijving", name: "description", widget: "markdown", required: false }
-
-  # Gallery (single file)
-  - name: "gallery"
-    label: "Fotogalerij"
-    files:
-      - label: "Fotogalerij"
-        name: "gallery"
-        file: "content/gallery.json"
-        fields:
-          - label: "Foto's"
-            name: "photos"
-            widget: "list"
-            fields:
-              - { label: "Foto", name: "src", widget: "image", required: true }
-              - { label: "Alt tekst", name: "alt", widget: "string", required: true }
-              - { label: "Bijschrift", name: "caption", widget: "string", required: false }
 
   # Bosklas (single file)
   - name: "bosklas"
@@ -111,6 +61,40 @@ collections:
             fields:
               - { label: "Foto", name: "src", widget: "image" }
               - { label: "Bijschrift", name: "caption", widget: "string", required: false }
+
+  # Gallery (single file)
+  - name: "gallery"
+    label: "Fotogalerij"
+    files:
+      - label: "Fotogalerij"
+        name: "gallery"
+        file: "content/gallery.json"
+        fields:
+          - label: "Foto's"
+            name: "photos"
+            widget: "list"
+            fields:
+              - { label: "Foto", name: "src", widget: "image", required: true }
+              - { label: "Alt tekst", name: "alt", widget: "string", required: true }
+              - { label: "Bijschrift", name: "caption", widget: "string", required: false }
+
+  # Nature section
+  - name: "nature"
+    label: "Planten en Dieren"
+    files:
+      - label: "Natuur Info"
+        name: "nature"
+        file: "content/nature.json"
+        fields:
+          - { label: "Titel", name: "title", widget: "string", required: true }
+          - { label: "Ondertitel", name: "subtitle", widget: "string", required: true }
+          - label: "Kaarten"
+            name: "cards"
+            widget: "list"
+            fields:
+              - { label: "Icoon", name: "icon", widget: "select", options: ["Flower2", "Bird", "Apple"], required: true }
+              - { label: "Titel", name: "title", widget: "string", required: true }
+              - { label: "Beschrijving", name: "description", widget: "text", required: true }
 
   # Contact (single file)
   - name: "contact"

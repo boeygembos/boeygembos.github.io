@@ -16,8 +16,8 @@ collections:
   - name: "hero"
     label: "Banner en Titel"
     files:
-      - label: "Hero"
-        name: "edit 'Banner en Titel'..."
+      - label: "edit 'Banner en Titel'..."
+        name: "Hero"
         file: "content/hero.json"
         fields:
           - { label: "Titel", name: "title", widget: "string", required: true }
@@ -29,8 +29,8 @@ collections:
   - name: "intro"
     label: "Over het bos"
     files:
-      - label: "Intro"
-        name: "edit 'Over het bos...'"
+      - label: "edit 'Over het bos...'"
+        name: "Intro"
         file: "content/intro.json"
         fields:
           - { label: "Titel", name: "title", widget: "string", required: true }
@@ -43,8 +43,8 @@ collections:
   - name: "bosklas"
     label: "Bosklas"
     files:
-      - label: "Bosklas Informatie"
-        name: "edit 'Bosklas'..."
+      - label: "edit 'Bosklas'..."
+        name: "Bosklas Informatie"
         file: "content/bosklas.json"
         fields:
           - { label: "Titel", name: "title", widget: "string", required: true }
@@ -66,8 +66,8 @@ collections:
   - name: "gallery"
     label: "Fotogalerij"
     files:
-      - label: "Fotogalerij"
-        name: "edit 'Fotogalerij'..."
+      - label: "edit 'Fotogalerij'..."
+        name: "Fotogalerij"
         file: "content/gallery.json"
         fields:
           - label: "Foto's"
@@ -82,8 +82,8 @@ collections:
   - name: "nature"
     label: "Planten en Dieren"
     files:
-      - label: "Natuur Info"
-        name: "edit 'Planten en Dieren'..."
+      - label: "edit 'Planten en Dieren'..."
+        name: "Natuur Info"
         file: "content/nature.json"
         fields:
           - { label: "Titel", name: "title", widget: "string", required: true }
@@ -100,8 +100,8 @@ collections:
   - name: "contact"
     label: "Contact"
     files:
-      - label: "Contact Informatie"
-        name: "edit 'contact'..."
+      - label: "edit 'contact'..."
+        name: "Contact Informatie"
         file: "content/contact.json"
         fields:
           - { label: "Adres", name: "address", widget: "text", required: false }
